@@ -1,10 +1,13 @@
 const note_div = document.querySelector('#note_div')
 
+// Start the process of asking the server for the current note once a timer
+// expires.
 function startTimer() {
   const microseconds = 2000  // 2 seconds
   window.setTimeout(fetchCurrentNote, microseconds)
 }
 
+// Ask the server for the current note immediately.
 function fetchCurrentNote() {
   fetch('/ajax/get_current_node')
     .then(function(response) {
@@ -14,7 +17,7 @@ function fetchCurrentNote() {
       // Update the div.
       note_div.innerHTML = myJson.note
 
-      // Start the timer for the next request
+      // Start the timer again for the next request.
       startTimer()
     })
 }
@@ -25,5 +28,6 @@ if (note_div != null) {
   // when the user is logged in.  Querying for a node that does not exist
   // returns null.
 
+  // Start by fetching the current note without any delay.
   fetchCurrentNote()
 }
