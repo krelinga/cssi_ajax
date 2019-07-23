@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Update Note</title>
+  </head>
+  <body>
+    <span class="user_id">
+      {% if user %}
+      {{user.email()}} <a href="{{logout_url}}">Log Out</a>
+      {% else %}
+      <a href="{{login_url}}">Log in</a>
+      {% endif %}
+    </span>
+    <a href="/">Query Note Continuously</a>
+    {% if user %}
+    <h1>Update Note</h1>
+    <form action="/update_note" method="post">
+      <div>
+        Note text: <input type="text" name="note" value="{% if user_note %}{{user_note.note}}{% endif %}" autofocus>
+        <input type="submit" name="" value="Submit">
+      </div>
+    </form>
+    {% endif %}
+  </body>
+</html>

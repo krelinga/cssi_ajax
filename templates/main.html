@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Main</title>
+  </head>
+  <body>
+    <span class="user_id">
+      {% if user %}
+      {{user.email()}} <a href="{{logout_url}}">Log Out</a>
+      {% else %}
+      <a href="{{login_url}}">Log in</a>
+      {% endif %}
+    </span>
+    <a href="/update_note">Update Note</a>
+    {% if user %}
+    <h1>Current Note Value</h1>
+    <!-- This div is only rendered if the user is logged in -->
+    <div id="note_div"></div>
+    {% endif %}
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
